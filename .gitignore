@@ -4,6 +4,13 @@
 # Log file
 *.log
 
+# Dir
+.idea/*
+
+# Files
+*.png
+*.iml
+
 # BlueJ files
 *.ctxt
 
