@@ -34,30 +34,49 @@ public class Forca {
             listaEmString = listaEmString + s;
         }
 
-        System.out.println("Qual Letra você chuta? --> ");
-        String letraDigitada = in.next().toLowerCase();
+        int vida = 6;
+        while (vida > 0) {
+            System.out.println("Você ainda possui " + vida + " vida(s)");
+            System.out.println("Qual Letra você chuta? --> ");
+            String letraDigitada = in.next().toLowerCase();
 
 
-        String[] listaLetrasCorretas = palavraChave.split("");
+            String[] listaLetrasCorretas = palavraChave.split("");
 
-        int i = 0;
-        qtdLetras = palavraChave.length();
-        while (i < qtdLetras) {
-            if (listaLetrasCorretas[i].equals(letraDigitada)) {
-                dica[i] = letraDigitada;
-
+            int i = 0;
+            int j = 0;
+            qtdLetras = palavraChave.length();
+            while (i < qtdLetras) {
+                if (listaLetrasCorretas[i].equals(letraDigitada)) {
+                    dica[i] = letraDigitada;
+                    j++;
+                }
+                i++;
             }
-            i++;
-        }
-        String novaDica = "";
+            String novaDica = "";
 
-        for (String s: dica){
-            novaDica+= s;
-        }
-        System.out.println(novaDica);
+            for (String s : dica) {
+                novaDica += s;
+            }
+            System.out.println(novaDica);
+            if (j == 0) {
+                System.out.println("A Palavra não possui essa letra");
+                vida --;
+            }
+            int contador = 0;
+            for (int k = 0; k <novaDica.length() ; k++) {
+                if (novaDica.charAt(k)=='_'){
+                    contador++;
+                }
+            }
+            if (contador == 0){
+                System.out.println("Parabens! Você Ganhou!");
+                vida = 0;
+            }
 
+        }
+        System.out.println("Fim de Jogo!");
     }
-
 
     public static String[] montaDica(int qtdLetras) {
         dica = new String[qtdLetras];
